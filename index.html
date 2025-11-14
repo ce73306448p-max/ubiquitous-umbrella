@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>친환경 행동 기록</title>
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    /* 기본 스타일 */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Nanum Gothic', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(to bottom, #a8edea, #fed6e3);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      color: #4a7c59;
+      margin-bottom: 20px;
+    }
+
+    p {
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    input, button {
+      padding: 10px 15px;
+      border-radius: 10px;
+      border: none;
+      margin: 5px 0;
+      font-size: 16px;
+    }
+
+    input {
+      width: 80%;
+      border: 2px solid #4a7c59;
+    }
+
+    button {
+      background-color: #4a7c59;
+      color: white;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #36714d;
+    }
+
+    ul {
+      list-style: none;
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    li {
+      background-color: #f0f9f5;
+      margin: 5px 0;
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    .feedback {
+      margin-top: 20px;
+      color: #36714d;
+      font-weight: bold;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>오늘의 친환경 실천</h1>
+    <p>작은 행동이 지구를 바꿉니다! 오늘 실천한 친환경 행동을 기록해보세요.</p>
+    <input type="text" id="actionInput" placeholder="예: 텀블러 사용, 분리수거">
+    <button onclick="addAction()">기록하기</button>
+
+    <ul id="actionList"></ul>
+
+    <div class="feedback" id="feedback"></div>
+  </div>
+
+  <script>
+    const actionList = document.getElementById('actionList');
+    const feedback = document.getElementById('feedback');
+
+    function addAction() {
+      const input = document.getElementById('actionInput');
+      const action = input.value.trim();
+
+      if(action === '') {
+        alert('실천한 행동을 입력해주세요!');
+        return;
+      }
+
+      const li = document.createElement('li');
+      li.textContent = action;
+      actionList.appendChild(li);
+
+      input.value = '';
+
+      // 피드백 메시지
+      const count = actionList.children.length;
+      feedback.textContent = `지금까지 ${count}가지 행동을 기록했어요! 멋져요!`;
+    }
+  </script>
+</body>
+</html>
